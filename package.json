@@ -1,0 +1,32 @@
+{
+  "name": "youtuber",
+  "version": "0.0.1",
+  "description": "A suite of tools to mess with Youtube",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adrianblynch/youtuber.git"
+  },
+  "keywords": [
+    "youtube",
+    "download",
+    "videos",
+    "lists"
+  ],
+  "author": "Adrian Lynch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adrianblynch/youtuber/issues"
+  },
+  "homepage": "https://github.com/adrianblynch/youtuber",
+  "dependencies": {
+    "request": "~2.45.0",
+    "youtube-dl": "~1.5.15"
+  },
+  "devDependencies": {
+    "chai": "~1.9.2"
+  }
+}
