@@ -3,11 +3,11 @@ var youtubedl = require('youtube-dl');
 var request = require('request');
 var self = this;
 
-exports.getList = function(listId, callback) {
+exports.getVideosInList = function(listId, callback) {
 
-	var listJson = 'http://gdata.youtube.com/feeds/api/playlists/' + listId + '/?v=2&alt=json&feature=plcp';
+	var url = 'http://gdata.youtube.com/feeds/api/playlists/' + listId + '/?v=2&alt=json&feature=plcp';
 
-	request(listJson, function (error, response, body) {
+	request(url, function(error, response, body) {
 
 		if (error) {
 			return callback(error);
@@ -17,19 +17,7 @@ exports.getList = function(listId, callback) {
 			return callback(new Error('Failed to get a 200 status code'));
 		}
 
-		return callback(null, JSON.parse(body));
-
-	});
-
-};
-
-exports.getVideosInList = function(list, callback) {
-
-	self.extractVideos(JSON.parse(body).feed.entry, function(err, videos) {
-
-		//console.log(videos[0]);
-
-		videos = videos.map(function(video, i) {
+		var videos = JSON.parse(body).feed.entry.map(function(video, i) {
 			return {
 				title: video.title.$t,
 				url: video.content.src
@@ -39,12 +27,6 @@ exports.getVideosInList = function(list, callback) {
 		return callback(null, videos);
 
 	});
-
-};
-
-exports.extractVideos = function(feed, callback) {
-
-	return callback(null, feed);
 
 };
 
