@@ -15,7 +15,7 @@ describe('youtuber', function() {
 
 				var video = videos[0];
 
-				expect(video).to.include.keys('title', 'url');
+				expect(video).to.include.keys('title', 'url', 'downloaded');
 				expect(video.title).to.be.a('string');
 				expect(video.url).to.be.a('string');
 

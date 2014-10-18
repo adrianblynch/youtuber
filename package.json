@@ -24,6 +24,8 @@
   "homepage": "https://github.com/adrianblynch/youtuber",
   "dependencies": {
     "request": "~2.45.0",
+    "sanitize-filename": "^1.1.1",
+    "underscore": "^1.7.0",
     "youtube-dl": "~1.5.15"
   },
   "devDependencies": {
