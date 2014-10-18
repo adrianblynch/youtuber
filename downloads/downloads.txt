@@ -1,1 +1,0 @@
-For now, this is the directory where downloaded videos are saved.
