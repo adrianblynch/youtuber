@@ -1,7 +1,7 @@
 youtuber
 ========
 
-A suite of tools to mess with Youtube.
+A suite (in the losest meaning of the word) of tools to mess with Youtube.
 
 See examples.js for basic usage.
 
