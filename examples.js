@@ -1,4 +1,3 @@
-var expect = require('chai').expect;
 var yt = require('./index.js');
 
 // Tutorials on Android Studio development by Derek Banas
