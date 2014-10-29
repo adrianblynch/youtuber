@@ -5,6 +5,8 @@ var _ = require('underscore');
 var sanitize = require('sanitize-filename');
 var self = this;
 
+// TODO: Add a status maybe to see what's happening with each video
+
 exports.downloadVideosInList = function(listId, options, callback) {
 
 	var defaults = _.extend({
@@ -58,26 +60,30 @@ exports.downloadVideos = function(videos, options, callback) {
 		saveDir: '.'
 	}, options);
 
-	videos.forEach(function(video) {
+	fs.mkdir(defaults.saveDir, function(err) {
 
-		var videoDl = youtubedl(
-			video.url,
-			['--max-quality=18'], // '--write-srt', '--srt-lang=en'
-			{cwd: __dirname}
-		);
+		videos.forEach(function(video) {
 
-		videoDl.on('info', function(info) {
-			// Maybe update the status of the video here
+			var videoDl = youtubedl(
+				video.url,
+				['--max-quality=18'], // '--write-srt', '--srt-lang=en'
+				{cwd: __dirname}
+			);
+
+			videoDl.on('info', function(info) {
+				// Maybe update the status of the video here
+			});
+
+			video.fileName = sanitize(video.title) + '.mp4';
+
+			videoDl.pipe(fs.createWriteStream(defaults.saveDir + '/' + video.fileName));
+
+			video.downloaded = true; // May not work
+
 		});
 
-		video.fileName = sanitize(video.title) + '.mp4';
-
-		videoDl.pipe(fs.createWriteStream(defaults.saveDir + '/' + video.fileName));
-
-		video.downloaded = true; // May not work
+		return callback(null, videos);
 
 	});
-
-	return callback(null, videos);
 
 };
