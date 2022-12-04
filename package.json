@@ -23,10 +23,10 @@
   },
   "homepage": "https://github.com/adrianblynch/youtuber",
   "dependencies": {
-    "request": "~2.45.0",
+    "request": "~2.73.0",
     "sanitize-filename": "^1.1.1",
     "underscore": "^1.7.0",
-    "youtube-dl": "~1.5.15"
+    "youtube-dl": "~1.10.1"
   },
   "devDependencies": {
     "chai": "~1.9.2"
